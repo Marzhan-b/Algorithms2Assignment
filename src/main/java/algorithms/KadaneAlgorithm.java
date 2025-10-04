@@ -5,13 +5,10 @@ import java.time.Instant;
 
 public class KadaneAlgorithm {
 
-    public static int[] findMaxSubarray(int[] arr) {
-        // Подключаем трекер
-        PerformanceTracker tracker = new PerformanceTracker();
+    public static int[] findMaxSubarray(int[] arr, PerformanceTracker tracker) {
         Instant start = Instant.now();
         tracker.startTimer();
 
-        // Алгоритм Кадане
         if (arr == null || arr.length == 0) {
             tracker.stopTimer(start, Instant.now());
             tracker.exportToCSV("kadane_metrics.csv");
@@ -20,35 +17,34 @@ public class KadaneAlgorithm {
 
         int maxSum = arr[0];
         int currentSum = arr[0];
-        int startIdx = 0;
-        int endIdx = 0;
+        int startIndex = 0;
+        int endIndex = 0;
         int tempStart = 0;
 
         for (int i = 1; i < arr.length; i++) {
+            tracker.incrementComparisons();
             if (currentSum < 0) {
+                tracker.incrementAssignments();
                 currentSum = arr[i];
                 tempStart = i;
             } else {
+                tracker.incrementAssignments();
                 currentSum += arr[i];
             }
 
-            if (currentSum > maxSum) {
-                maxSum = currentSum;
-                startIdx = tempStart;
-                endIdx = i;
-            }
-
-            // Можно добавить счётчики операций
             tracker.incrementComparisons();
-            tracker.incrementAssignments();
+            if (currentSum > maxSum) {
+                tracker.incrementAssignments();
+                maxSum = currentSum;
+                startIndex = tempStart;
+                endIndex = i;
+            }
         }
 
         Instant end = Instant.now();
         tracker.stopTimer(start, end);
-
-        // Экспортируем все метрики в CSV
         tracker.exportToCSV("kadane_metrics.csv");
 
-        return new int[]{maxSum, startIdx, endIdx};
+        return new int[]{maxSum, startIndex, endIndex};
     }
 }
