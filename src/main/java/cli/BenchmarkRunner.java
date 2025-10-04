@@ -14,15 +14,20 @@ public class BenchmarkRunner {
         for (int size : sizes) {
             int[] arr = new int[size];
             for (int i = 0; i < size; i++) {
-                arr[i] = random.nextInt(2000) - 1000;
+                arr[i] = random.nextInt(2000) - 1000; // значения от -1000 до 999
             }
 
             PerformanceTracker tracker = new PerformanceTracker();
+            Instant start = Instant.now();
+            tracker.startTimer();
 
-            KadaneAlgorithm.findMaxSubarray(arr, tracker);
+            KadaneAlgorithm.findMaxSubarray(arr);
+
+            Instant end = Instant.now();
+            tracker.stopTimer(start, end);
 
             tracker.exportToCSV("benchmark_metrics.csv");
-            System.out.println(" Benchmark completed for size: " + size);
+            System.out.println("Benchmark completed for size: " + size);
         }
     }
 }

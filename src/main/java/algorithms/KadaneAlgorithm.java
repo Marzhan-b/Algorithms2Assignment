@@ -5,7 +5,8 @@ import java.time.Instant;
 
 public class KadaneAlgorithm {
 
-    public static int[] findMaxSubarray(int[] arr, PerformanceTracker tracker) {
+    public static int[] findMaxSubarray(int[] arr) {
+        PerformanceTracker tracker = new PerformanceTracker();
         Instant start = Instant.now();
         tracker.startTimer();
 
