@@ -20,19 +20,18 @@ The project focuses on:
 │ └── test/java/
 │ └── algorithms/KadaneTest.java
 ├── docs/
-│ ├── analysis-report.pdf
-│ └── plots/
-│ ├── runtime-vs-input.png
-│ ├── comparisons-vs-accesses.png
-│ └── optimizations-impact.png
+  └── plots/
+│   ├── report.pdf
+│   ├── Дизайн без названия.png
 ├── kadane-results.csv
 ├── README.md
-└── pom.xml вот этот у меня как текст а я хочу чтобы было фото
+└── pom.xml 
 ````
 
 ---
 
-Implementation Details
+## _Implementation Details_
+
 **1. KadaneAlgorithm.java**
 
 Implements both baseline and optimized versions
