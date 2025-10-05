@@ -14,7 +14,7 @@ public class BenchmarkRunner {
         for (int size : sizes) {
             int[] arr = new int[size];
             for (int i = 0; i < size; i++) {
-                arr[i] = random.nextInt(2000) - 1000; // значения от -1000 до 999
+                arr[i] = random.nextInt(2000) - 1000;
             }
 
             PerformanceTracker tracker = new PerformanceTracker();

@@ -49,6 +49,24 @@ public class KadaneAlgorithm {
         return new int[]{maxSum, startIndex, endIndex};
     }
 
+    public static int findMaxSubarray(int[] arr, PerformanceTracker tracker) {
+        if (arr == null || arr.length == 0) return 0;
+
+        int maxSoFar = arr[0];
+        int maxEndingHere = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            tracker.incrementComparisons();
+            maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+            tracker.incrementAssignments();
+
+            if (maxEndingHere > maxSoFar) {
+                maxSoFar = maxEndingHere;
+            }
+        }
+        return maxSoFar;
+    }
+
     public static int kadane(int[] arr) {
         if (arr == null || arr.length == 0) return 0;
         int maxSoFar = arr[0];
