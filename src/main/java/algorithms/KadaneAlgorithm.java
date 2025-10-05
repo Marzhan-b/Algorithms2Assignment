@@ -49,6 +49,7 @@ public class KadaneAlgorithm {
         return new int[]{maxSum, startIndex, endIndex};
     }
 
+<<<<<<< HEAD
     public static int findMaxSubarray(int[] arr, PerformanceTracker tracker) {
         if (arr == null || arr.length == 0) return 0;
 
@@ -67,6 +68,8 @@ public class KadaneAlgorithm {
         return maxSoFar;
     }
 
+=======
+>>>>>>> f95722a85ba89f45e8625b805746cdeb416d5415
     public static int kadane(int[] arr) {
         if (arr == null || arr.length == 0) return 0;
         int maxSoFar = arr[0];
