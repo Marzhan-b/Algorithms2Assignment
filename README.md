@@ -10,38 +10,30 @@ The project focuses on:
 - Experimental validation
 - Code quality and reproducibility
 
+## 📁 Project Structure
+````
+├── src/
+│ ├── main/java/
+│ │ ├── algorithms/KadaneAlgorithm.java
+│ │ ├── metrics/PerformanceTracker.java
+│ │ └── cli/BenchmarkRunner.java
+│ └── test/java/
+│ └── algorithms/KadaneTest.java
+├── docs/
+│ ├── analysis-report.pdf
+│ └── plots/
+│ ├── runtime-vs-input.png
+│ ├── comparisons-vs-accesses.png
+│ └── optimizations-impact.png
+├── kadane-results.csv
+├── README.md
+└── pom.xml вот этот у меня как текст а я хочу чтобы было фото
+````
+
 ---
 
-## 📁 Project Structure
-
-
-📁 src
-├── main
-│ └── java
-│ ├── algorithms
-│ │ └── KadaneAlgorithm.java
-│ ├── metrics
-│ │ └── PerformanceTracker.java
-│ └── cli
-│ └── BenchmarkRunner.java
-└── test
-└── java
-└── algorithms
-└── KadaneTest.java
-
-📁 docs
-└── plots
-      └──report.pdf
-      └──  Дизайн без названия.pdf
-
-
-
-📄 README.md
-📄 pom.xml
-
-
 Implementation Details
-1. KadaneAlgorithm.java
+**1. KadaneAlgorithm.java**
 
 Implements both baseline and optimized versions
 
@@ -50,7 +42,7 @@ Empty array
 Single-element array
 All-negative elements
 
-2. PerformanceTracker.java
+****2. PerformanceTracker.java****
 
 Tracks key runtime metrics:
 Comparisons
@@ -59,12 +51,12 @@ Swaps (if any)
 Memory allocations
 Execution time (in ms)
 
-3. BenchmarkRunner.java
+**3. BenchmarkRunner.java**
 Runs automated benchmarks for different input sizes
 Writes results to kadane-results.csv
 Prints per-trial metrics to the console
 
-4. KadaneTest.java
+**4. KadaneTest.java**
 
 Comprehensive JUnit5 test suite covering:
 Empty input
@@ -111,7 +103,7 @@ Environment: Java 17, Windows 11, Maven
 ![n vs Comparisons](docs/plots/![Дизайн без названия.png](docs/plots/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%20%D0%B1%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png)
 
 
-🔍 Analysis and Discussion
+**🔍 Analysis and Discussion**
 
 Both comparisons and array accesses increase linearly with input size, confirming theoretical complexity.
 
