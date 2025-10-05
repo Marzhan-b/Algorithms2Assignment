@@ -53,11 +53,41 @@ Space usage is constant (O(1)) — memory-efficient
 Edge cases (empty or single-element arrays) handled correctly
 
 
+<<<<<<< HEAD
 
+=======
+Benchmark Graph (PNG)
+
+![Kadane Benchmark](https://quickchart.io/chart?c={
+
+type:'line',
+data:{
+labels:['198','1998','3998','9998','19998','99999'],
+datasets:[{
+label:'Elapsed Time (ns)',
+data:[0,0,1344900,1537000,16002500,43159900],
+fill:false,
+borderColor:'rgb(75, 192, 192)',
+tension:0.1
+}]
+},
+options:{
+plugins:{legend:{display:true, position:'top'}},
+scales:{
+y:{title:{display:true, text:'Elapsed Time (ns)'}},
+x:{title:{display:true, text:'Array Size'}}
+}
+}
+})
+>>>>>>> b4be2c3 (docs: add Kadane benchmark, table and graph)
 
 
 Notes
 
 Use this implementation for large arrays — much faster than naive O(n²) approaches
 
+<<<<<<< HEAD
 Benchmark data collected using CLI runner in nanoseconds
+=======
+Benchmark data collected using CLI runner in nanoseconds
+>>>>>>> b4be2c3 (docs: add Kadane benchmark, table and graph)
