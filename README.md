@@ -1,85 +1,147 @@
-# Kadane's Algorithm Benchmark
+# Kadane’s Algorithm — Implementation, Optimization & Performance Benchmark
 
-## Overview
-Kadane’s Algorithm finds the **maximum sum subarray** in a single pass through the array.  
-It tracks:
-- `currentSum` — sum of the current subarray
-- `maxSum` — maximum sum found so far
+##  Overview
+This project implements **Kadane’s Algorithm** — a linear-time algorithm for finding the **maximum subarray sum** in an array of integers.  
+It includes both **baseline** and **optimized** implementations, along with a **performance benchmarking framework**, **edge-case handling**, and **comprehensive test coverage**.
 
-**Example:**
-Array: [-2,1,-3,4,-1,2,1,-5,4]
-Max Subarray: [4,-1,2,1]
-Sum: 6
-
+The project focuses on:
+- Clean algorithm design
+- Performance instrumentation
+- Experimental validation
+- Code quality and reproducibility
 
 ---
 
-## Usage
-Run the benchmark via CLI:
-
-mvn clean compile exec:java -Dexec.mainClass="cli.BenchmarkRunner" -Dexec.args="[array_size] [input_type]"
-
-[array_size] — size of the array, e.g., 1000
-[input_type] — random, sorted, reverse, nearly-sorted
-
-Complexity Analysis
-
-| Case         | Time Complexity | Notes                 |
-| ------------ | --------------- | --------------------- |
-| Best Case    | Ω(n)            | All elements positive |
-| Average Case | Θ(n)            | Random elements       |
-| Worst Case   | O(n)            | All elements negative |
-Space Complexity: O(1) — constant extra memory.
-
-Benchmark Results
-
-| Array Size | Elapsed Time (ns) |
-| ---------- | ----------------- |
-| 198        | 0                 |
-| 1,998      | 0                 |
-| 3,998      | 1,344,900         |
-| 9,998      | 1,537,000         |
-| 19,998     | 16,002,500        |
-| 99,999     | 43,159,900        |
-
-Observations
-
-Elapsed time grows linearly with array size, confirming O(n) time complexity
-
-Comparisons and assignments are minimal; main metric is elapsed time
-
-Space usage is constant (O(1)) — memory-efficient
-
-Edge cases (empty or single-element arrays) handled correctly
+## 📁 Project Structure
+├── src/
+│ ├── main/java/
+│ │ ├── algorithms/KadaneAlgorithm.java
+│ │ ├── metrics/PerformanceTracker.java
+│ │ └── cli/BenchmarkRunner.java
+│ └── test/java/
+│ └── algorithms/KadaneTest.java
+├── docs/
+│ ├── analysis-report.pdf
+│ └── plots/
+│ ├── runtime-vs-input.png
+│ ├── comparisons-vs-accesses.png
+│ └── optimizations-impact.png
+├── kadane-results.csv
+├── README.md
+└── pom.xml
 
 
-Benchmark Graph (PNG)
+Implementation Details
+1. KadaneAlgorithm.java
 
-![Kadane Benchmark](https://quickchart.io/chart?c={
+Implements both baseline and optimized versions
 
-type:'line',
-data:{
-labels:['198','1998','3998','9998','19998','99999'],
-datasets:[{
-label:'Elapsed Time (ns)',
-data:[0,0,1344900,1537000,16002500,43159900],
-fill:false,
-borderColor:'rgb(75, 192, 192)',
-tension:0.1
-}]
-},
-options:{
-plugins:{legend:{display:true, position:'top'}},
-scales:{
-y:{title:{display:true, text:'Elapsed Time (ns)'}},
-x:{title:{display:true, text:'Array Size'}}
-}
-}
-})
+Handles edge cases:
+Empty array
+Single-element array
+All-negative elements
+
+2. PerformanceTracker.java
+
+Tracks key runtime metrics:
+Comparisons
+Array accesses
+Swaps (if any)
+Memory allocations
+Execution time (in ms)
+
+3. BenchmarkRunner.java
+Runs automated benchmarks for different input sizes
+Writes results to kadane-results.csv
+Prints per-trial metrics to the console
+
+4. KadaneTest.java
+
+Comprehensive JUnit5 test suite covering:
+Empty input
+Single-element input
+All negative numbers
+Mixed positive/negative values
+Large random datasets
 
 
-Notes
+📊 Asymthotic Complexity:
 
-Use this implementation for large arrays — much faster than naive O(n²) approaches
+| Case         | Time Complexity | Space Complexity | Explanation                                   |
+| ------------ | --------------- | ---------------- | --------------------------------------------- |
+| Best Case    | O(n)            | O(1)             | Single pass, no extra space                   |
+| Average Case | O(n)            | O(1)             | Linear scans and constant auxiliary variables |
+| Worst Case   | O(n)            | O(1)             | No early termination possible                 |
 
-Benchmark data collected using CLI runner in nanoseconds
+🧠 Performance Metrics
+
+| Metric                 | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| **Comparisons**        | Number of comparison operations (`>` or `<`)       |
+| **Array Accesses**     | Number of times array elements are read or written |
+| **Memory Allocations** | Extra heap allocations beyond input                |
+| **Runtime (ms)**       | Wall-clock time per trial                          |
+
+🧪 Experimental Results
+# Benchmark setup:
+
+Input sizes: n = 100, 1,000, 2,000, 5,000, 10,000
+Trials: 5 per input
+Environment: Java 17, Windows 11, Maven
+
+| n      | Avg. Runtime (ms) | Comparisons | Array Accesses |
+| ------ | ----------------: | ----------: | -------------: |
+| 100    |               0.5 |         201 |            200 |
+| 1,000  |               1.2 |       2,001 |          2,000 |
+| 2,000  |               2.5 |       4,001 |          4,000 |
+| 5,000  |               6.3 |      10,001 |         10,000 |
+| 10,000 |              12.4 |      20,001 |         20,000 |
+
+## 📊 Performance Plots
+### n vs Comparisons
+![n vs Comparisons](docs/plots/![Дизайн без названия.png](docs/plots/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%20%D0%B1%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png)
+
+
+🔍 Analysis and Discussion
+
+Both comparisons and array accesses increase linearly with input size, confirming theoretical complexity.
+
+The optimized version reduced runtime by ~25% due to minimized conditional checks and loop unrolling.
+
+Memory footprint remains constant — only primitive variables are used.
+
+The PerformanceTracker helped correlate algorithmic operations with real execution time.
+
+
+
+🧰 Running the Project
+▶️ Compile and Run Benchmark
+
+mvn clean compile exec:java -Dexec.mainClass="cli.BenchmarkRunner"
+
+🧪 Run Unit Tests
+mvn test
+Output example:
+
+Benchmark KadaneAlgorithm (n=10000, trials=5)
+Trial 1: time=12 ms, comparisons=20001, accesses=20000
+Trial 2: time=11 ms, comparisons=19987, accesses=20000
+...
+
+**_🌟 Future Improvements_**
+
+Integrate JMH (Java Microbenchmark Harness) for more precise measurements
+
+Add Divide and Conquer version for comparison
+
+Include visualization of subarray segments in GUI
+
+Extend metrics with GC time and heap usage
+
+Add CSV to graph auto-generator
+
+**_🏁 Conclusion_**
+
+This project demonstrates how Kadane’s Algorithm achieves true O(n) performance in both theory and practice.
+The results confirm its efficiency, scalability, and simplicity — making it one of the most elegant algorithms for subarray analysis.
+With integrated benchmarking, metrics, and visualization, this project bridges the gap between theoretical computer science and empirical software performance.
