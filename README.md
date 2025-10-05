@@ -13,22 +13,31 @@ The project focuses on:
 ---
 
 ## 📁 Project Structure
-├── src/
-│ ├── main/java/
-│ │ ├── algorithms/KadaneAlgorithm.java
-│ │ ├── metrics/PerformanceTracker.java
-│ │ └── cli/BenchmarkRunner.java
-│ └── test/java/
-│ └── algorithms/KadaneTest.java
-├── docs/
-│ ├── analysis-report.pdf
-│ └── plots/
-│ ├── runtime-vs-input.png
-│ ├── comparisons-vs-accesses.png
-│ └── optimizations-impact.png
-├── kadane-results.csv
-├── README.md
-└── pom.xml
+
+
+📁 src
+├── main
+│ └── java
+│ ├── algorithms
+│ │ └── KadaneAlgorithm.java
+│ ├── metrics
+│ │ └── PerformanceTracker.java
+│ └── cli
+│ └── BenchmarkRunner.java
+└── test
+└── java
+└── algorithms
+└── KadaneTest.java
+
+📁 docs
+└── plots
+      └──report.pdf
+      └──  Дизайн без названия.pdf
+
+
+
+📄 README.md
+📄 pom.xml
 
 
 Implementation Details
