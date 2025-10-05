@@ -11,7 +11,7 @@ public class PerformanceTracker {
     private long elapsedTime = 0;
 
     public void startTimer() {
-        // ничего не делает, просто маркер
+
     }
 
     public void stopTimer(Instant start, Instant end) {
