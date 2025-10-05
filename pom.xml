@@ -16,6 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+
     <dependencies>
         <!-- JUnit 5 -->
         <dependency>
@@ -46,4 +47,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
